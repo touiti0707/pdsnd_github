@@ -130,6 +130,7 @@ def trip_duration_stats(df):
     print('\nCalculating Trip Duration...\n')
     start_time = time.time()
 
+    #creates a new 'travel_time' column which is the 'End Time' column less the 'Start Time' column
     df['travel_time'] = df['End Time'] - df['Start Time']
 
     # display total travel time
