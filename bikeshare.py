@@ -80,7 +80,6 @@ def load_data(city, month, day):
 def time_stats(df):
     """Displays statistics on the most frequent times of travel."""
 
-    print('\nCalculating The Most Frequent Times of Travel...\n')
     start_time = time.time()
 
     # display the most common month
@@ -102,7 +101,6 @@ def time_stats(df):
 def station_stats(df):
     """Displays statistics on the most popular stations and trip."""
 
-    print('\nCalculating The Most Popular Stations and Trip...\n')
     start_time = time.time()
 
     # display most commonly used start station
@@ -114,6 +112,7 @@ def station_stats(df):
     print('Most Popular End Station:', popular_end_station)
 
     # display most frequent combination of start station and end station trip
+    # by creating a new 'trip' column which is composed by the 'Start Station' and the 'End Station' strings attached with 'to' in between
     df['trip'] = df['Start Station'] +' to '+ df['End Station']
     popular_trip = df['trip'].mode()[0]
     print('Most Popular trip:', popular_trip)
@@ -126,9 +125,9 @@ def station_stats(df):
 def trip_duration_stats(df):
     """Displays statistics on the total and average trip duration."""
 
-    print('\nCalculating Trip Duration...\n')
     start_time = time.time()
 
+    #creates a new 'travel_time' column which is the 'End Time' column less the 'Start Time' column
     df['travel_time'] = df['End Time'] - df['Start Time']
 
     # display total travel time
@@ -144,7 +143,6 @@ def trip_duration_stats(df):
 def user_stats(df):
     """Displays statistics on bikeshare users."""
 
-    print('\nCalculating User Stats...\n')
     start_time = time.time()
 
     # Display counts of user types
