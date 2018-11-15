@@ -1,4 +1,3 @@
-import time
 import pandas as pd
 
 CITY_DATA = { 'chicago': 'chicago.csv',
@@ -80,8 +79,6 @@ def load_data(city, month, day):
 def time_stats(df):
     """Displays statistics on the most frequent times of travel."""
 
-    start_time = time.time()
-
     # display the most common month
     popular_month = df['month'].mode()[0]
     print('Most Popular month:', popular_month)
@@ -94,14 +91,11 @@ def time_stats(df):
     popular_hour = df['hour'].mode()[0]
     print('Most Popular Start Hour:', popular_hour)
 
-    print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
 
 
 def station_stats(df):
     """Displays statistics on the most popular stations and trip."""
-
-    start_time = time.time()
 
     # display most commonly used start station
     popular_start_station = df['Start Station'].mode()[0]
@@ -117,15 +111,11 @@ def station_stats(df):
     popular_trip = df['trip'].mode()[0]
     print('Most Popular trip:', popular_trip)
 
-
-    print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
 
 
 def trip_duration_stats(df):
     """Displays statistics on the total and average trip duration."""
-
-    start_time = time.time()
 
     #creates a new 'travel_time' column which is the 'End Time' column less the 'Start Time' column
     df['travel_time'] = df['End Time'] - df['Start Time']
@@ -136,14 +126,11 @@ def trip_duration_stats(df):
     # display mean travel time
     print('Mean travel time:', df['travel_time'].mean())
 
-    print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
 
 
 def user_stats(df):
     """Displays statistics on bikeshare users."""
-
-    start_time = time.time()
 
     # Display counts of user types
     user_types = df['User Type'].value_counts()
@@ -166,7 +153,6 @@ def user_stats(df):
         print('Most recent year of birth:', df['Birth Year'].max())
         print('Most common year of birth:', df['Birth Year'].mode()[0])
 
-    print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
 
 
